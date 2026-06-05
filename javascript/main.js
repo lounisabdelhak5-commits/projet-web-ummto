@@ -1,6 +1,13 @@
 const CURRENCIES = { EUR: { symbol: '€', rate: 1 }, USD: { symbol: '$', rate: 1.08 }, DZD: { symbol: 'DA', rate: 188 } };
 const VALID_CODES = Object.keys(CURRENCIES);
 
+function getApiBase() {
+  return SafeStorage.getItem('apiBase') || (
+    window.location.origin.includes('localhost') || window.location.origin.includes('127.0.0.1')
+      ? '' : 'https://lntech-backend.onrender.com'
+  );
+}
+
 function getCurrency() {
   const code = SafeStorage.getItem('currency');
   return VALID_CODES.includes(code) ? code : 'EUR';
@@ -111,10 +118,18 @@ function demanderDevis(productId) {
     window.location.href = 'connexion.html';
     return;
   }
+  const token = SafeStorage.getItem('authToken');
+  if (token) {
+    fetch(getApiBase() + '/api/devis', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token },
+      body: JSON.stringify({ name: currentUser.name, email: currentUser.email, product_id: product.id, product_name: product.name })
+    }).catch(() => {});
+  }
   const devis = JSON.parse(SafeStorage.getItem('devis') || '[]');
   devis.push({ ...product, quantity: 1, date: new Date().toISOString() });
   SafeStorage.setItem('devis', JSON.stringify(devis));
-  alert(`📩 Demande de devis envoyée pour ${product.name}.\nNotre équipe vous contactera sous 48h.`);
+  alert(`Demande de devis envoyée pour ${product.name}.\nNotre équipe vous contactera sous 48h.`);
 }
 
 function addToCart(productId) {
@@ -437,7 +452,7 @@ function removeFromCart(productId) {
   renderCart();
 }
 
-function checkout() {
+async function checkout() {
   const currentUser = JSON.parse(SafeStorage.getItem('currentUser'));
   if (!currentUser) {
     alert("Veuillez vous connecter pour passer commande.");
@@ -448,8 +463,25 @@ function checkout() {
     alert("Votre panier est vide.");
     return;
   }
+  const token = SafeStorage.getItem('authToken');
+  if (token) {
+    try {
+      const r = await fetch(getApiBase() + '/api/orders', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token }
+      });
+      const j = await r.json();
+      if (j.order_id) {
+        alert(`Commande #${j.order_id} validée ! Total: ${formatPrice(j.total)}\nMerci de votre confiance !`);
+        cart = [];
+        saveCart();
+        renderCart();
+        return;
+      }
+    } catch {}
+  }
   const total = cart.reduce((sum, item) => sum + (item.price || 0) * (item.quantity || 1), 0);
-  alert(`✅ Commande validée avec succès !\nTotal: ${formatPrice(total)}\nMerci de votre confiance !`);
+  alert(`Commande validée ! Total: ${formatPrice(total)}\nMerci de votre confiance !`);
   cart = [];
   saveCart();
   renderCart();
