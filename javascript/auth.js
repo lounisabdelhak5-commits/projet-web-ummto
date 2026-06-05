@@ -1,4 +1,15 @@
-// Authentication Logic and Form Validation
+const API_BASE = SafeStorage.getItem('apiBase') || (
+  window.location.origin.includes('localhost') || window.location.origin.includes('127.0.0.1')
+    ? '' : 'https://lntech-backend.onrender.com'
+);
+
+function apiPost(path, data) {
+  return fetch(API_BASE + '/api' + path, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data)
+  }).then(r => r.json()).catch(() => null);
+}
 
 if (!SafeStorage.getItem('users')) {
   SafeStorage.setItem('users', JSON.stringify([
@@ -6,7 +17,7 @@ if (!SafeStorage.getItem('users')) {
   ]));
 }
 
-function handleRegister(event) {
+async function handleRegister(event) {
   event.preventDefault();
   
   const nameInput = document.getElementById('reg-name');
@@ -35,27 +46,37 @@ function handleRegister(event) {
     return;
   }
   
-  const users = JSON.parse(SafeStorage.getItem('users') || '[]');
-  const userExists = users.some(u => u.email === emailInput.value);
-  
-  if (userExists) {
-    errorMsg.textContent = "Un utilisateur avec cet email existe déjà.";
-    return;
-  }
-  
-  users.push({
+  const result = await apiPost('/auth/register', {
     name: nameInput.value.trim(),
     email: emailInput.value,
     password: passwordInput.value
   });
   
-  SafeStorage.setItem('users', JSON.stringify(users));
+  if (result && result.token) {
+    SafeStorage.setItem('authToken', result.token);
+    SafeStorage.setItem('currentUser', JSON.stringify(result.user));
+    window.location.href = '../index.html';
+    return;
+  }
   
+  if (result && result.error) {
+    errorMsg.textContent = result.error;
+    return;
+  }
+  
+  const users = JSON.parse(SafeStorage.getItem('users') || '[]');
+  const userExists = users.some(u => u.email === emailInput.value);
+  if (userExists) {
+    errorMsg.textContent = "Un utilisateur avec cet email existe déjà.";
+    return;
+  }
+  users.push({ name: nameInput.value.trim(), email: emailInput.value, password: passwordInput.value });
+  SafeStorage.setItem('users', JSON.stringify(users));
   SafeStorage.setItem('currentUser', JSON.stringify({ name: nameInput.value.trim(), email: emailInput.value }));
   window.location.href = '../index.html';
 }
 
-function handleLogin(event) {
+async function handleLogin(event) {
   event.preventDefault();
   
   const emailInput = document.getElementById('login-email');
@@ -64,15 +85,30 @@ function handleLogin(event) {
   
   errorMsg.textContent = '';
   
+  const result = await apiPost('/auth/login', {
+    email: emailInput.value,
+    password: passwordInput.value
+  });
+  
+  if (result && result.token) {
+    SafeStorage.setItem('authToken', result.token);
+    SafeStorage.setItem('currentUser', JSON.stringify(result.user));
+    const params = new URLSearchParams(window.location.search);
+    window.location.href = params.get('redirect') || '../index.html';
+    return;
+  }
+  
+  if (result && result.error) {
+    errorMsg.textContent = result.error;
+    return;
+  }
+  
   const users = JSON.parse(SafeStorage.getItem('users') || '[]');
-  
   const user = users.find(u => u.email === emailInput.value && u.password === passwordInput.value);
-  
   if (user) {
     SafeStorage.setItem('currentUser', JSON.stringify({ name: user.name, email: user.email }));
     const params = new URLSearchParams(window.location.search);
-    const redirect = params.get('redirect') || '../index.html';
-    window.location.href = redirect;
+    window.location.href = params.get('redirect') || '../index.html';
   } else {
     errorMsg.textContent = "Email ou mot de passe incorrect.";
   }
@@ -80,6 +116,7 @@ function handleLogin(event) {
 
 function logout() {
   SafeStorage.removeItem('currentUser');
+  SafeStorage.removeItem('authToken');
   window.location.href = 'index.html';
 }
 
@@ -103,7 +140,10 @@ function updateAuthUI() {
   }
 }
 
-// Attach events on load
+function getAuthToken() {
+  return SafeStorage.getItem('authToken');
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   const regForm = document.getElementById('register-form');
   if (regForm) regForm.addEventListener('submit', handleRegister);
