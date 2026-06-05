@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Trouvez les meilleurs composants selon votre budget - LNtech">
+    <title>LNtech | Build by Budget</title>
+    <link rel="stylesheet" href="../style/style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="../index.html" class="logo"><span class="logo-ln">LN</span><span class="logo-tech">tech</span></a>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="../index.html">Accueil</a></li>
+                <li class="dropdown">
+                    <a href="produits.html">Produits ▾</a>
+                    <ul class="dropdown-content">
+                        <li class="dropdown">
+                            <a href="#">Processeurs (CPU) ▸</a>
+                            <ul class="sub-dropdown-content">
+                                <li><a href="produits.html" onclick="localStorage.setItem('filter', 'Processeurs Intel')">Intel</a></li>
+                                <li><a href="produits.html" onclick="localStorage.setItem('filter', 'Processeurs AMD (Ryzen)')">AMD Ryzen</a></li>
+                                <li><a href="produits.html" onclick="localStorage.setItem('filter', 'Processeurs Serveur')">Serveur (Xeon / EPYC)</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#">Cartes Graphiques (GPU) ▸</a>
+                            <ul class="sub-dropdown-content">
+                                <li><a href="produits.html" onclick="localStorage.setItem('filter', 'Cartes Graphiques' ); localStorage.setItem('brand', 'NVIDIA')">NVIDIA</a></li>
+                                <li><a href="produits.html" onclick="localStorage.setItem('filter', 'Cartes Graphiques'); localStorage.setItem('brand', 'AMD')">AMD Radeon</a></li>
+                                <li><a href="produits.html" onclick="localStorage.setItem('filter', 'Cartes Graphiques'); localStorage.setItem('brand', 'Intel')">Intel Arc</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#">Cartes Mères ▸</a>
+                            <ul class="sub-dropdown-content">
+                                <li><a href="produits.html" onclick="localStorage.setItem('filter', 'Cartes Mères Intel')">Chipsets Intel</a></li>
+                                <li><a href="produits.html" onclick="localStorage.setItem('filter', 'Cartes Mères AMD')">Chipsets AMD</a></li>
+                                <li><a href="produits.html" onclick="localStorage.setItem('filter', 'Cartes Mères Serveur')">Serveur</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#">Mémoire RAM ▸</a>
+                            <ul class="sub-dropdown-content">
+                                <li><a href="produits.html" onclick="localStorage.setItem('filter', 'Mémoire RAM')">RAM Normale</a></li>
+                                <li><a href="produits.html" onclick="localStorage.setItem('filter', 'RAM ECC')">RAM ECC</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#">Stockage ▸</a>
+                            <ul class="sub-dropdown-content">
+                                <li><a href="produits.html" onclick="localStorage.setItem('filter', 'Stockage'); localStorage.setItem('keyword', 'SSD')">SSD (NVMe / SATA)</a></li>
+                                <li><a href="produits.html" onclick="localStorage.setItem('filter', 'Stockage'); localStorage.setItem('keyword', 'HDD')">HDD (Disques durs)</a></li>
+                                <li><a href="produits.html" onclick="localStorage.setItem('filter', 'Stockage')">Tous les stockages</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="produits.html" onclick="localStorage.setItem('filter', 'Alimentations (PSU)')">Alimentations PSU</a></li>
+                        <li><a href="produits.html" onclick="localStorage.setItem('filter', 'Boîtiers (Cases)')">Boîtiers PC</a></li>
+                        <li class="dropdown">
+                            <a href="#">Refroidissement ▸</a>
+                            <ul class="sub-dropdown-content">
+                                <li><a href="produits.html" onclick="localStorage.setItem('filter', 'Refroidissement CPU'); localStorage.setItem('keyword', 'Air')">Ventilateur (Air)</a></li>
+                                <li><a href="produits.html" onclick="localStorage.setItem('filter', 'Refroidissement CPU'); localStorage.setItem('keyword', 'Liquid')">Watercooling (Liquid)</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="produits.html" onclick="localStorage.setItem('filter', 'Écrans')">Écrans</a></li>
+                        <li><a href="produits.html" onclick="localStorage.setItem('filter', 'Périphériques')">Périphériques</a></li>
+                        <li><a href="produits.html" onclick="localStorage.setItem('filter', 'Microcontrôleurs et SBC')">Microcontrôleurs / SBC</a></li>
+
+                    </ul>
+                </li>
+                <li><a href="budget.html" class="nav-link-budget">Budget 💰</a></li>
+                <li><a href="about.html">À Propos</a></li>
+                <li><a href="help.html">Aide</a></li>
+            </ul>
+            <button class="hamburger" id="hamburger" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+            <div class="nav-actions">
+                <div id="auth-links">
+                    <a href="connexion.html" class="btn btn-outline">Connexion</a>
+                    <a href="inscription.html" class="btn btn-primary">Inscription</a>
+                </div>
+                <div id="user-greeting"></div>
+                <select id="currency-select" class="currency-select" onchange="setCurrency(this.value); location.reload();" aria-label="Monnaie">
+                    <option value="EUR">€ EUR</option>
+                    <option value="USD">$ USD</option>
+                    <option value="DZD">DA DZD</option>
+                </select>
+                <a href="commande.html" class="cart-link">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="9" cy="21" r="1"></circle>
+                        <circle cx="20" cy="21" r="1"></circle>
+                        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                    </svg>
+                    <span id="cart-badge" class="cart-badge">0</span>
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="animate-fade-in">
+            <div class="budget-heading">
+                <h1>Build by Budget</h1>
+                <p>Trouvez les meilleurs composants adaptés à votre budget. Indiquez combien vous souhaitez dépenser et quel type de composant vous cherchez.</p>
+            </div>
+
+            <div class="glass-card budget-form">
+                <div class="budget-form-row">
+                    <div class="budget-form-group">
+                        <label for="budget-input">Mon budget</label>
+                        <div class="budget-form-inline">
+                            <input type="range" id="budget-slider" class="budget-slider" min="50" max="20000" step="50" value="800">
+                            <input type="number" id="budget-input" class="form-control budget-input-number" value="800" min="50" max="20000">
+                        </div>
+                    </div>
+                    <div class="budget-form-group">
+                        <label for="category-select">Type de composant</label>
+                        <select id="category-select" class="form-control">
+                            <option value="all">Tous les composants</option>
+                            <option value="Processeurs Intel">CPU - Intel</option>
+                            <option value="Processeurs AMD (Ryzen)">CPU - AMD Ryzen</option>
+                            <option value="Cartes Graphiques">GPU - Cartes Graphiques</option>
+                            <option value="Cartes Mères Intel">Carte Mère - Intel</option>
+                            <option value="Cartes Mères AMD">Carte Mère - AMD</option>
+                            <option value="Mémoire RAM">Mémoire RAM</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <button id="budget-search-btn" class="btn btn-primary budget-btn-search">Rechercher</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="budget-results" class="budget-results">
+                <div class="budget-placeholder">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <path d="m21 21-4.35-4.35"></path>
+                    </svg>
+                    <p>Ajustez votre budget et cliquez sur Rechercher pour voir les composants disponibles.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Abdelhak Lounis. Tous les droits du site sont réservés.</p>
+    </footer>
+
+    <script src="../javascript/data.js"></script>
+    <script src="../javascript/auth.js"></script>
+    <script src="../javascript/main.js"></script>
+    <script src="../javascript/budget.js"></script>
+    <script>
+        document.querySelectorAll('.nav-links a').forEach(a => {
+            if (a.href === window.location.href) a.style.color = 'var(--secondary-color)';
+        });
+    </script>
+    <script>
+        const currSel = document.getElementById('currency-select');
+        if (currSel) currSel.value = getCurrency() || 'EUR';
+    </script>
+</body>
+</html>

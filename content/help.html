@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Centre d'aide LNtech">
+    <title>LNtech | Aide et Support</title>
+    <link rel="stylesheet" href="../style/style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="../index.html" class="logo">
+                <span class="logo-ln">LN</span><span class="logo-tech">tech</span>
+            </a>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="../index.html">Accueil</a></li>
+                <li class="dropdown">
+                    <a href="produits.html">Produits ▾</a>
+                    <ul class="dropdown-content">
+                        <li class="dropdown">
+                            <a href="#">Processeurs (CPU) ▸</a>
+                            <ul class="sub-dropdown-content">
+                                <li><a href="produits.html" onclick="localStorage.setItem('filter', 'Processeurs Intel')">Intel</a></li>
+                                <li><a href="produits.html" onclick="localStorage.setItem('filter', 'Processeurs AMD (Ryzen)')">AMD Ryzen</a></li>
+                                <li><a href="produits.html" onclick="localStorage.setItem('filter', 'Processeurs Serveur')">Serveur (Xeon / EPYC)</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#">Cartes Graphiques (GPU) ▸</a>
+                            <ul class="sub-dropdown-content">
+                                <li><a href="produits.html" onclick="localStorage.setItem('filter', 'Cartes Graphiques' ); localStorage.setItem('brand', 'NVIDIA')">NVIDIA</a></li>
+                                <li><a href="produits.html" onclick="localStorage.setItem('filter', 'Cartes Graphiques'); localStorage.setItem('brand', 'AMD')">AMD Radeon</a></li>
+                                <li><a href="produits.html" onclick="localStorage.setItem('filter', 'Cartes Graphiques'); localStorage.setItem('brand', 'Intel')">Intel Arc</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#">Cartes Mères ▸</a>
+                            <ul class="sub-dropdown-content">
+                                <li><a href="produits.html" onclick="localStorage.setItem('filter', 'Cartes Mères Intel')">Chipsets Intel</a></li>
+                                <li><a href="produits.html" onclick="localStorage.setItem('filter', 'Cartes Mères AMD')">Chipsets AMD</a></li>
+                                <li><a href="produits.html" onclick="localStorage.setItem('filter', 'Cartes Mères Serveur')">Serveur</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#">Mémoire RAM ▸</a>
+                            <ul class="sub-dropdown-content">
+                                <li><a href="produits.html" onclick="localStorage.setItem('filter', 'Mémoire RAM')">RAM Normale</a></li>
+                                <li><a href="produits.html" onclick="localStorage.setItem('filter', 'RAM ECC')">RAM ECC</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#">Stockage ▸</a>
+                            <ul class="sub-dropdown-content">
+                                <li><a href="produits.html" onclick="localStorage.setItem('filter', 'Stockage'); localStorage.setItem('keyword', 'SSD')">SSD (NVMe / SATA)</a></li>
+                                <li><a href="produits.html" onclick="localStorage.setItem('filter', 'Stockage'); localStorage.setItem('keyword', 'HDD')">HDD (Disques durs)</a></li>
+                                <li><a href="produits.html" onclick="localStorage.setItem('filter', 'Stockage')">Tous les stockages</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="produits.html" onclick="localStorage.setItem('filter', 'Alimentations (PSU)')">Alimentations PSU</a></li>
+                        <li><a href="produits.html" onclick="localStorage.setItem('filter', 'Boîtiers (Cases)')">Boîtiers PC</a></li>
+                        <li class="dropdown">
+                            <a href="#">Refroidissement ▸</a>
+                            <ul class="sub-dropdown-content">
+                                <li><a href="produits.html" onclick="localStorage.setItem('filter', 'Refroidissement CPU'); localStorage.setItem('keyword', 'Air')">Ventilateur (Air)</a></li>
+                                <li><a href="produits.html" onclick="localStorage.setItem('filter', 'Refroidissement CPU'); localStorage.setItem('keyword', 'Liquid')">Watercooling (Liquid)</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="produits.html" onclick="localStorage.setItem('filter', 'Écrans')">Écrans</a></li>
+                        <li><a href="produits.html" onclick="localStorage.setItem('filter', 'Périphériques')">Périphériques</a></li>
+                        <li><a href="produits.html" onclick="localStorage.setItem('filter', 'Microcontrôleurs et SBC')">Microcontrôleurs / SBC</a></li>
+
+                    </ul>
+                </li>
+                <li><a href="budget.html" class="nav-link-budget">Budget 💰</a></li>
+                <li><a href="about.html">À Propos</a></li>
+                <li><a href="help.html">Aide</a></li>
+            </ul>
+            <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+            <div class="nav-actions">
+                <div id="auth-links">
+                    <a href="connexion.html" class="btn btn-outline">Connexion</a>
+                    <a href="inscription.html" class="btn btn-primary">Inscription</a>
+                </div>
+                <div id="user-greeting">
+                    <!-- Populated by JS -->
+                </div>
+                <select id="currency-select" class="currency-select" onchange="setCurrency(this.value); location.reload();" aria-label="Monnaie">
+                    <option value="EUR">€ EUR</option>
+                    <option value="USD">$ USD</option>
+                    <option value="DZD">DA DZD</option>
+                </select>
+                <a href="commande.html" class="cart-link">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="9" cy="21" r="1"></circle>
+                        <circle cx="20" cy="21" r="1"></circle>
+                        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                    </svg>
+                    <span id="cart-badge" class="cart-badge">0</span>
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="glass-card animate-fade-in help-section">
+            <h1 class="help-title">Centre d'Aide & Services LNtech</h1>
+            
+            <p class="help-intro">
+                Chez LNtech, nous ne vendons pas seulement des composants, nous offrons une expérience complète. Découvrez nos services exclusifs conçus pour vous faciliter la vie.
+            </p>
+
+            <div class="service-grid">
+                <div class="glass-card service-card">
+                    <h3 class="service-title">🚀 Livraison Express & Sécurisée</h3>
+                    <p class="service-text">Nous savons que vous avez hâte de monter votre PC. C'est pourquoi nous avons mis en place un réseau logistique ultra-rapide.</p>
+                    <ul class="service-list">
+                        <li><strong>Expédition le jour même</strong> pour toute commande avant 14h.</li>
+                        <li><strong>Livraison en 24h/48h</strong> partout sur le territoire.</li>
+                        <li><strong>Emballage blindé</strong>: Vos cartes graphiques et processeurs sont protégés contre les chocs et l'électricité statique.</li>
+                        <li>Assurance transport incluse à 100%.</li>
+                    </ul>
+                </div>
+                
+                <div class="glass-card service-card-blue">
+                    <h3 class="service-title">🔧 Service de Montage Sur Mesure</h3>
+                    <p class="service-text">Peur de plier les pins de votre processeur ? Laissez nos techniciens certifiés assembler votre machine.</p>
+                    <ul class="service-list">
+                        <li><strong>Câble Management parfait :</strong> Un flux d'air optimal et un look épuré.</li>
+                        <li><strong>Stress Test :</strong> Chaque PC monté subit 12h de test (CPU, GPU, RAM) avant expédition.</li>
+                        <li><strong>Mise à jour BIOS et Pilotes</strong> effectuée par nos soins.</li>
+                        <li>Garantie montage de 3 ans.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h2 class="faq-title">Foire Aux Questions (FAQ)</h2>
+            <div class="faq-container">
+            
+            <div class="faq-item">
+                <div class="faq-question">Comment suivre ma commande ?</div>
+                <div class="faq-answer">Une fois votre commande expédiée, vous recevrez un email contenant un lien de suivi. Vous pouvez également suivre l'état de votre commande depuis votre espace client.</div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">Quels sont les délais de livraison ?</div>
+                <div class="faq-answer">Nous proposons la livraison express sous 24h à 48h selon votre localisation. Toutes nos expéditions sont ultra-sécurisées pour protéger les composants sensibles.</div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">Puis-je annuler ou modifier ma commande ?</div>
+                <div class="faq-answer">Vous pouvez modifier ou annuler votre commande tant qu'elle n'a pas été expédiée. Veuillez contacter notre support client le plus rapidement possible.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Quelle est la durée de la garantie ?</div>
+                <div class="faq-answer">Tous nos produits bénéficient d'une garantie constructeur de 2 à 3 ans minimum. LNtech s'occupe des démarches de retour pour vous pendant la première année.</div>
+            </div>
+
+            <div class="contact-form">
+                <h3 class="contact-title">Contacter le Support</h3>
+                <form onsubmit="event.preventDefault(); alert('Votre message a été envoyé avec succès à notre équipe !'); this.reset();">
+                    <div class="form-group">
+                        <label>Sujet</label>
+                        <select class="form-control select-dark">
+                            <option>Problème de commande</option>
+                            <option>Support Technique</option>
+                            <option>Question sur un produit</option>
+                            <option>Autre</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Message</label>
+                        <textarea class="form-control" rows="5" placeholder="Décrivez votre problème en détail..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-full">Envoyer le message</button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Abdelhak Lounis. Tous les droits du site sont réservés.</p>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="../javascript/auth.js"></script>
+    <script src="../javascript/nav.js"></script>
+    <script src="../javascript/main.js"></script>
+    <script>
+        const currSel = document.getElementById('currency-select');
+        if (currSel) currSel.value = getCurrency() || 'EUR';
+    </script>
+</body>
+</html>

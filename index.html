@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Site e-commerce de vente de composants informatiques">
+    <title>LNtech | Accueil</title>
+    <link rel="stylesheet" href="style/style.css">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <a href="index.html" class="logo">LNtech</a>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="index.html">Accueil</a></li>
+                <li class="dropdown">
+                    <a href="content/produits.html">Produits ▾</a>
+                    <ul class="dropdown-content">
+                        <li class="dropdown">
+                            <a href="#">Processeurs (CPU) ▸</a>
+                            <ul class="sub-dropdown-content">
+                                <li><a href="content/produits.html" onclick="localStorage.setItem('filter', 'Processeurs Intel')">Intel</a></li>
+                                <li><a href="content/produits.html" onclick="localStorage.setItem('filter', 'Processeurs AMD (Ryzen)')">AMD Ryzen</a></li>
+                                <li><a href="content/produits.html" onclick="localStorage.setItem('filter', 'Processeurs Serveur')">Serveur (Xeon / EPYC)</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#">Cartes Graphiques (GPU) ▸</a>
+                            <ul class="sub-dropdown-content">
+                                <li><a href="content/produits.html" onclick="localStorage.setItem('filter', 'Cartes Graphiques' ); localStorage.setItem('brand', 'NVIDIA')">NVIDIA</a></li>
+                                <li><a href="content/produits.html" onclick="localStorage.setItem('filter', 'Cartes Graphiques'); localStorage.setItem('brand', 'AMD')">AMD Radeon</a></li>
+                                <li><a href="content/produits.html" onclick="localStorage.setItem('filter', 'Cartes Graphiques'); localStorage.setItem('brand', 'Intel')">Intel Arc</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#">Cartes Mères ▸</a>
+                            <ul class="sub-dropdown-content">
+                                <li><a href="content/produits.html" onclick="localStorage.setItem('filter', 'Cartes Mères Intel')">Chipsets Intel</a></li>
+                                <li><a href="content/produits.html" onclick="localStorage.setItem('filter', 'Cartes Mères AMD')">Chipsets AMD</a></li>
+                                <li><a href="content/produits.html" onclick="localStorage.setItem('filter', 'Cartes Mères Serveur')">Serveur</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#">Mémoire RAM ▸</a>
+                            <ul class="sub-dropdown-content">
+                                <li><a href="content/produits.html" onclick="localStorage.setItem('filter', 'Mémoire RAM')">RAM Normale</a></li>
+                                <li><a href="content/produits.html" onclick="localStorage.setItem('filter', 'RAM ECC')">RAM ECC</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#">Stockage ▸</a>
+                            <ul class="sub-dropdown-content">
+                                <li><a href="content/produits.html" onclick="localStorage.setItem('filter', 'Stockage'); localStorage.setItem('keyword', 'SSD')">SSD (NVMe / SATA)</a></li>
+                                <li><a href="content/produits.html" onclick="localStorage.setItem('filter', 'Stockage'); localStorage.setItem('keyword', 'HDD')">HDD (Disques durs)</a></li>
+                                <li><a href="content/produits.html" onclick="localStorage.setItem('filter', 'Stockage')">Tous les stockages</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="content/produits.html" onclick="localStorage.setItem('filter', 'Alimentations (PSU)')">Alimentations PSU</a></li>
+                        <li><a href="content/produits.html" onclick="localStorage.setItem('filter', 'Boîtiers (Cases)')">Boîtiers PC</a></li>
+                        <li class="dropdown">
+                            <a href="#">Refroidissement ▸</a>
+                            <ul class="sub-dropdown-content">
+                                <li><a href="content/produits.html" onclick="localStorage.setItem('filter', 'Refroidissement CPU'); localStorage.setItem('keyword', 'Air')">Ventilateur (Air)</a></li>
+                                <li><a href="content/produits.html" onclick="localStorage.setItem('filter', 'Refroidissement CPU'); localStorage.setItem('keyword', 'Liquid')">Watercooling (Liquid)</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="content/produits.html" onclick="localStorage.setItem('filter', 'Écrans')">Écrans</a></li>
+                        <li><a href="content/produits.html" onclick="localStorage.setItem('filter', 'Périphériques')">Périphériques</a></li>
+                        <li><a href="content/produits.html" onclick="localStorage.setItem('filter', 'Microcontrôleurs et SBC')">Microcontrôleurs / SBC</a></li>
+
+                    </ul>
+                </li>
+                <li><a href="content/budget.html" class="nav-link-budget">Budget 💰</a></li>
+                <li><a href="content/about.html">À Propos</a></li>
+                <li><a href="content/help.html">Aide</a></li>
+            </ul>
+            <button class="hamburger" id="hamburger" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+            <div class="nav-actions">
+                <div id="auth-links">
+                    <a href="content/connexion.html" class="btn btn-outline">Connexion</a>
+                    <a href="content/inscription.html" class="btn btn-primary">Inscription</a>
+                </div>
+                <div id="user-greeting">
+                    <!-- Populated by JS -->
+                </div>
+                <select id="currency-select" class="currency-select" onchange="setCurrency(this.value); location.reload();" aria-label="Monnaie">
+                    <option value="EUR">€ EUR</option>
+                    <option value="USD">$ USD</option>
+                    <option value="DZD">DA DZD</option>
+                </select>
+                <a href="content/commande.html" class="cart-link">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="9" cy="21" r="1"></circle>
+                        <circle cx="20" cy="21" r="1"></circle>
+                        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                    </svg>
+                    <span id="cart-badge" class="cart-badge">0</span>
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="glass-card animate-fade-in hero-section">
+            <h1 class="hero-title">
+                Bienvenue sur LNtech</h1>
+            <p class="hero-text">
+                Découvrez les meilleurs composants informatiques du moment. CPU, Cartes Graphiques, et Cartes Mères pour
+                monter le PC de vos rêves.
+            </p>
+            <a href="content/produits.html" class="btn btn-primary hero-btn">Voir
+                nos produits</a>
+        </section>
+
+        <!-- AVANTAGES SECTION -->
+        <section class="animate-fade-in section-gap" style="animation-delay: 0.1s;">
+            <h2 class="section-heading">Pourquoi Choisir LNtech ?</h2>
+            <div class="advantages-grid">
+                <article class="glass-card advantage-card">
+                    <div class="advantage-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 17h14M5 12h14M5 7h14"/><rect x="2" y="3" width="20" height="18" rx="2"/></svg>
+                    </div>
+                    <h3>Livraison Rapide</h3>
+                    <p>Expédition sous 24h et livraison offerte dès 100€ d'achat.</p>
+                </article>
+                <article class="glass-card advantage-card">
+                    <div class="advantage-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2"/><path d="M1 10h22"/></svg>
+                    </div>
+                    <h3>Paiement Sécurisé</h3>
+                    <p>Carte bancaire, PayPal ou virement — vos données sont protégées.</p>
+                </article>
+                <article class="glass-card advantage-card">
+                    <div class="advantage-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                    </div>
+                    <h3>Support 24/7</h3>
+                    <p>Une équipe d'experts à votre écoute par chat, email ou téléphone.</p>
+                </article>
+                <article class="glass-card advantage-card">
+                    <div class="advantage-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 4H3a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2z"/><path d="M16 12a4 4 0 1 1-8 0 4 4 0 0 1 8 0z"/><path d="M7 12h.01"/><path d="M17 12h.01"/></svg>
+                    </div>
+                    <h3>Retours Faciles</h3>
+                    <p>30 jours pour changer d'avis, retour gratuit et remboursement rapide.</p>
+                </article>
+                <article class="glass-card advantage-card">
+                    <div class="advantage-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    </div>
+                    <h3>Meilleurs Prix</h3>
+                    <p>Garantie du meilleur prix sur tout notre catalogue de composants.</p>
+                </article>
+                <article class="glass-card advantage-card">
+                    <div class="advantage-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    </div>
+                    <h3>Produits Authentiques</h3>
+                    <p>100% des produits sont d'origine, sous garantie constructeur.</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="animate-fade-in" style="animation-delay: 0.2s;">
+            <h2 class="section-title-sm">Catégories Populaires</h2>
+            <div class="categories-grid">
+
+                <article class="glass-card category-card">
+                    <h3>Processeurs (CPU)</h3>
+                    <p>Intel Core & AMD Ryzen de dernière
+                        génération.</p>
+                    <a href="content/produits.html" class="btn btn-outline"
+                        onclick="localStorage.setItem('filter', 'CPU')">Découvrir</a>
+                </article>
+
+                <article class="glass-card category-card">
+                    <h3>Cartes Graphiques (GPU)</h3>
+                    <p>NVIDIA GeForce RTX & AMD Radeon RX.</p>
+                    <a href="content/produits.html" class="btn btn-outline"
+                        onclick="localStorage.setItem('filter', 'GPU')">Découvrir</a>
+                </article>
+
+                <article class="glass-card category-card">
+                    <h3>Cartes Mères</h3>
+                    <p>Les meilleures bases pour votre
+                        configuration.</p>
+                    <a href="content/produits.html" class="btn btn-outline"
+                        onclick="localStorage.setItem('filter', 'Carte Mère')">Découvrir</a>
+                </article>
+
+            </div>
+        </section>
+
+        <!-- FEATURED PRODUCTS SECTION -->
+        <section class="animate-fade-in section-gap" style="animation-delay: 0.4s;">
+            <h2 class="section-title-sm">Produits en Vedette</h2>
+            <p class="section-subtitle">Les composants les plus populaires du moment</p>
+            <div class="products-container" id="featured-products">
+                <!-- Rendered by JS -->
+            </div>
+            <div class="featured-footer">
+                <a href="content/produits.html" class="btn btn-primary btn-catalog">Voir tout le catalogue</a>
+            </div>
+        </section>
+
+        <!-- PARTNERS SECTION -->
+        <section class="animate-fade-in section-partners" style="animation-delay: 0.6s;">
+            <h2 class="section-title">Nos Partenaires de Confiance</h2>
+            <p class="partners-description">Nous travaillons avec les plus grands noms de l'industrie pour vous fournir le meilleur matériel.</p>
+            
+            <div class="brands-grid">
+                <img src="images/brands/amd.svg" alt="AMD" class="brand-logo" loading="lazy">
+                <img src="images/brands/intel.svg" alt="Intel" class="brand-logo" loading="lazy">
+                <img src="images/brands/nvidia.svg" alt="NVIDIA" class="brand-logo" loading="lazy">
+                <img src="images/brands/asus.svg" alt="ASUS" class="brand-logo" loading="lazy">
+                <img src="images/brands/msi.svg" alt="MSI" class="brand-logo" loading="lazy">
+                <img src="images/brands/gigabyte.svg" alt="Gigabyte" class="brand-logo" loading="lazy">
+                <img src="images/brands/corsair.svg" alt="Corsair" class="brand-logo" loading="lazy">
+                <img src="images/brands/gskill.svg" alt="G.Skill" class="brand-logo" loading="lazy">
+                <img src="images/brands/kingston.svg" alt="Kingston" class="brand-logo" loading="lazy">
+                <img src="images/brands/crucial.svg" alt="Crucial" class="brand-logo" loading="lazy">
+                <img src="images/brands/nzxt.svg" alt="NZXT" class="brand-logo" loading="lazy">
+                <img src="images/brands/bequiet.svg" alt="Be Quiet!" class="brand-logo" loading="lazy">
+                <img src="images/brands/noctua.svg" alt="Noctua" class="brand-logo" loading="lazy">
+                <img src="images/brands/zotac.svg" alt="Zotac" class="brand-logo" loading="lazy">
+                <img src="images/brands/sapphire.svg" alt="Sapphire" class="brand-logo" loading="lazy">
+                <img src="images/brands/raspberrypi.svg" alt="Raspberry Pi" class="brand-logo" loading="lazy">
+            </div>
+        </section>
+
+        <!-- NEWSLETTER SECTION -->
+        <section class="glass-card animate-fade-in newsletter-section" style="animation-delay: 0.8s;">
+            <h2 class="newsletter-title">Restez Informé</h2>
+            <p class="newsletter-text">Inscrivez-vous à notre newsletter pour recevoir les dernières offres et actualités tech.</p>
+            <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Merci pour votre inscription !'); this.reset();">
+                <input type="email" class="form-control newsletter-input" placeholder="Votre adresse email" required>
+                <button type="submit" class="btn btn-primary">S'inscrire</button>
+            </form>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Abdelhak Lounis. Tous les droits du site sont réservés.</p>
+        <p class="footer-muted">LNtech - L'excellence informatique.</p>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="javascript/data.js"></script>
+    <script src="javascript/auth.js"></script>
+    <script src="javascript/nav.js"></script>
+    <script src="javascript/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('featured-products');
+            if (!container || !products) return;
+
+            // Pick 8 featured products: newest first, then some popular ones
+            const featured = [...products]
+                .sort((a, b) => (b.isNew ? 1 : 0) - (a.isNew ? 0 : 1))
+                .slice(0, 8);
+
+            featured.forEach((product, index) => {
+                const delay = index * 0.1;
+                const card = document.createElement('article');
+                card.className = 'glass-card product-card animate-fade-in';
+                card.style.animationDelay = `${delay}s`;
+
+                const badgeHtml = product.isNew ? '<span class="badge badge-new badge-positioned">Nouveau</span>' : '';
+
+                card.innerHTML = `
+                    <div onclick="window.location.href='content/details.html?id=${product.id}'">
+                        <img src="${product.image}" alt="${product.name}" class="product-image" onerror="this.src='https://placehold.co/300x200/1e293b/94a3b8?text=Image'">
+                        ${badgeHtml}
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title product-title-click" onclick="window.location.href='content/details.html?id=${product.id}'">${product.name}</h3>
+                        <span class="product-brand">${product.brand} - ${product.category}</span>
+                        <div class="product-price">${formatPrice(product.price)}</div>
+                        <button class="btn btn-primary btn-block" onclick="addToCart(${product.id})">Ajouter au panier</button>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        });
+    </script>
+    <script>
+        const currSel = document.getElementById('currency-select');
+        if (currSel) currSel.value = getCurrency() || 'EUR';
+    </script>
+</body>
+
+</html>
