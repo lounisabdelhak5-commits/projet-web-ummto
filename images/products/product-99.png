@@ -1,0 +1,609 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en" data-theme="">
+  <head>
+
+    
+    
+    <title>
+  Log in
+ - Read the Docs Business </title>
+    
+
+    
+
+
+    
+  
+      <link rel="icon" type="image/png" href="https://app-assets.readthedocs.com/images/favicon.f231b6609d0b.png" />
+      
+      <link rel="stylesheet" type="text/css" href="https://app-assets.readthedocs.com/readthedocsext/theme/css/site.85e64d131b54.css" media="all" />
+      
+        <link rel="stylesheet" type="text/css" href="https://app-assets.readthedocs.com/readthedocsext/theme/css/dark.3671b503f5c6.css" media="(prefers-color-scheme: dark)" />
+      
+    
+
+    
+    
+    
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width" />
+
+    
+  
+      
+      
+      <script id="site-config" type="application/json">{"debug": false, "webpack_public_path": "https://app-assets.readthedocs.com/readthedocsext/theme/", "production_domain": "app.readthedocs.com", "sentry": {"dsn": "https://1ae85db596bc20e0b1b6e94130cb1210@o40776.ingest.us.sentry.io/4507964903849984", "environment": "business"}}</script>
+
+      
+      <script src="https://kit.fontawesome.com/66c8860b51.js"
+              crossorigin="anonymous"></script>
+    
+
+  </head>
+  <body class="">
+
+    
+
+
+    
+  
+  
+  
+    
+          
+
+          
+
+
+
+
+
+        
+  
+
+  
+  <div class="ui very padded container">
+    <div class="ui very tall centered grid">
+      <div class="left aligned middle aligned nine wide computer twelve wide tablet sixteen wide mobile column">
+        <div class="ui fluid card">
+          <div class="content">
+            
+              
+  <div class="ui center aligned header">
+    
+      
+        Log in to view this documentation
+      
+    
+  </div>
+
+
+              
+                <div class="description">
+                  
+  
+
+  <div data-bind="using: LoginView({last_tab: 'vcs', last_method: 'None'})">
+    <div class="ui basic horizontally fitted segment">
+      <div class="ui small stackable teal centered fluid wrapping menu"
+           data-bind="semanticui: {tabs: { autoTabActivation: last_tab() }}">
+
+        <a class="item" data-tab="vcs">
+          <i class="fas fa-cloud icon"></i>
+          
+            Connected account
+          
+        </a>
+
+        
+        <a class=" item"
+           data-bind="semanticui: { popup: popup_login_method('email') }"
+           data-tab="email">
+          <i class="fas fa-envelope icon"></i>
+          
+            Email
+          
+        </a>
+
+        
+          <a class="item" data-tab="sso">
+            <i class="fas fa-shield-alt icon"></i>
+            Single sign-on
+          </a>
+        
+
+        
+          <a class="item" href="https://espressif-docs.readthedocs-hosted.com/_/projects/esp-faq/sharing/password/?next=https%3A%2F%2Fespressif-docs.readthedocs-hosted.com%2Fprojects%2Fesp-faq%2Fen%2Flatest%2F_images%2Fesp32-nodemcu.png">
+            <i class="fas fa-lock icon"></i>
+            
+              Password
+            
+          </a>
+        
+      </div>
+    </div>
+
+    <div class="ui basic center aligned tab segment" data-tab="vcs">
+      <div class="ui relaxed list">
+        
+          
+          
+          
+
+
+
+
+
+
+
+
+
+  
+  <li class="item">
+    <a class="ui button"
+       data-bind="click: show_github_modal, semanticui: { popup: popup_login_method(['github','githubapp'], 'right center') }"
+       title="GitHub">
+      <i class="fa-brands fa-github icon"></i>
+      Log in using GitHub
+    </a>
+  </li>
+
+  <div class="ui tiny modal"
+       data-bind="semanticui: { modal: github_modal_config() }">
+    <div class="header">
+      Log in using GitHub
+    </div>
+    <div class="content">
+      <p>
+        Read the Docs now supports two methods for connecting your GitHub account:
+      </p>
+      <div class="ui segment">
+        <div class="ui small divided items">
+          
+            <div class="item">
+              <div class="content">
+                <div class="header">
+                  
+                    Our GitHub OAuth app
+                  
+                </div>
+                <div class="description">
+                  <p>
+                    
+                      
+                        For users that haven't switched their connected GitHub accounts to our new GitHub App.
+                      
+                    
+                  </p>
+                </div>
+                <div class="extra">
+                  
+                    
+
+
+
+  <form class="ui form"
+        method="post"
+        action="/accounts/github/login/?process=login&amp;next=%2Fcas%2Flogin%3Fsubproject%3Desp-faq%26service%3Dhttps%253A%252F%252Fespressif-docs.readthedocs-hosted.com%252F_%252Faccounts%252Flogin%252F%253Fnext%253Dhttps%25253A%25252F%25252Fespressif-docs.readthedocs-hosted.com%25252Fprojects%25252Fesp-faq%25252Fen%25252Flatest%25252F_images%25252Fesp32-nodemcu.png">
+    <input type="hidden" name="csrfmiddlewaretoken" value="3VQXuxvs3MZE9Y6Ij5KTSkMuTTcw0sTaZCvSEZT5SoETDc8iPeUa5SIZ1xronaLG">
+
+    
+    <button class="ui right floated primary button"
+            data-bind="click: save_login_method.bind($data, 'github'), semanticui: { popup: popup_login_method('github', 'right center') }"
+            type="submit">
+      
+
+      <i class="fa-brands fa-github icon"></i>
+      Log in using GitHub OAuth
+    </button>
+
+  </form>
+
+
+                  
+                </div>
+              </div>
+            </div>
+          
+            <div class="item">
+              <div class="content">
+                <div class="header">
+                  
+                    Our GitHub App
+                  
+                </div>
+                <div class="description">
+                  <p>
+                    
+                      
+                        For users that have switched their connected GitHub accounts already, or that would like to switch to our new GitHub App.
+                      
+                    
+                  </p>
+                </div>
+                <div class="extra">
+                  
+                    
+
+
+
+  <form class="ui form"
+        method="post"
+        action="/accounts/githubapp/login/?process=login&amp;next=%2Fcas%2Flogin%3Fsubproject%3Desp-faq%26service%3Dhttps%253A%252F%252Fespressif-docs.readthedocs-hosted.com%252F_%252Faccounts%252Flogin%252F%253Fnext%253Dhttps%25253A%25252F%25252Fespressif-docs.readthedocs-hosted.com%25252Fprojects%25252Fesp-faq%25252Fen%25252Flatest%25252F_images%25252Fesp32-nodemcu.png">
+    <input type="hidden" name="csrfmiddlewaretoken" value="3VQXuxvs3MZE9Y6Ij5KTSkMuTTcw0sTaZCvSEZT5SoETDc8iPeUa5SIZ1xronaLG">
+
+    
+    <button class="ui right floated basic button"
+            data-bind="click: save_login_method.bind($data, 'githubapp'), semanticui: { popup: popup_login_method('githubapp', 'right center') }"
+            type="submit">
+      
+
+      <i class="fa-brands fa-github icon"></i>
+      Log in using GitHub App
+    </button>
+
+  </form>
+
+
+                  
+                </div>
+              </div>
+            </div>
+          
+        </div>
+      </div>
+
+      <div class="ui info message">
+        <i class="fas fa-info-circle icon"></i>
+        To learn more about our new GitHub App integration,
+        <a href="https://about.readthedocs.com/blog/2025/06/announcing-our-github-app-beta/">read our beta announcement</a>
+      </div>
+    </div>
+    <div class="actions">
+      <div class="ui cancel button">Cancel</div>
+    </div>
+  </div>
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    <li class="item">
+      
+
+
+
+  <form class="ui form"
+        method="post"
+        action="/accounts/gitlab/login/?process=login&amp;next=%2Fcas%2Flogin%3Fsubproject%3Desp-faq%26service%3Dhttps%253A%252F%252Fespressif-docs.readthedocs-hosted.com%252F_%252Faccounts%252Flogin%252F%253Fnext%253Dhttps%25253A%25252F%25252Fespressif-docs.readthedocs-hosted.com%25252Fprojects%25252Fesp-faq%25252Fen%25252Flatest%25252F_images%25252Fesp32-nodemcu.png">
+    <input type="hidden" name="csrfmiddlewaretoken" value="3VQXuxvs3MZE9Y6Ij5KTSkMuTTcw0sTaZCvSEZT5SoETDc8iPeUa5SIZ1xronaLG">
+
+    
+    <button class="ui  button"
+            data-bind="click: save_login_method.bind($data, 'gitlab'), semanticui: { popup: popup_login_method('gitlab', 'right center') }"
+            type="submit">
+      
+
+      <i class="fa-brands fa-gitlab icon"></i>
+      Log in using GitLab
+    </button>
+
+  </form>
+
+
+    </li>
+  
+
+  
+    <li class="item">
+      
+
+
+
+  <form class="ui form"
+        method="post"
+        action="/accounts/bitbucket_oauth2/login/?process=login&amp;next=%2Fcas%2Flogin%3Fsubproject%3Desp-faq%26service%3Dhttps%253A%252F%252Fespressif-docs.readthedocs-hosted.com%252F_%252Faccounts%252Flogin%252F%253Fnext%253Dhttps%25253A%25252F%25252Fespressif-docs.readthedocs-hosted.com%25252Fprojects%25252Fesp-faq%25252Fen%25252Flatest%25252F_images%25252Fesp32-nodemcu.png">
+    <input type="hidden" name="csrfmiddlewaretoken" value="3VQXuxvs3MZE9Y6Ij5KTSkMuTTcw0sTaZCvSEZT5SoETDc8iPeUa5SIZ1xronaLG">
+
+    
+    <button class="ui  button"
+            data-bind="click: save_login_method.bind($data, 'bitbucket_oauth2'), semanticui: { popup: popup_login_method('bitbucket_oauth2', 'right center') }"
+            type="submit">
+      
+
+      <i class="fa-brands fa-bitbucket icon"></i>
+      Log in using Bitbucket
+    </button>
+
+  </form>
+
+
+    </li>
+  
+
+  
+    <li class="item">
+      
+
+
+
+  <form class="ui form"
+        method="post"
+        action="/accounts/google/login/?process=login&amp;next=%2Fcas%2Flogin%3Fsubproject%3Desp-faq%26service%3Dhttps%253A%252F%252Fespressif-docs.readthedocs-hosted.com%252F_%252Faccounts%252Flogin%252F%253Fnext%253Dhttps%25253A%25252F%25252Fespressif-docs.readthedocs-hosted.com%25252Fprojects%25252Fesp-faq%25252Fen%25252Flatest%25252F_images%25252Fesp32-nodemcu.png">
+    <input type="hidden" name="csrfmiddlewaretoken" value="3VQXuxvs3MZE9Y6Ij5KTSkMuTTcw0sTaZCvSEZT5SoETDc8iPeUa5SIZ1xronaLG">
+
+    
+    <button class="ui  button"
+            data-bind="click: save_login_method.bind($data, 'google'), semanticui: { popup: popup_login_method('google', 'right center') }"
+            type="submit">
+      
+
+      <i class="fa-brands fa-google icon"></i>
+      Log in using Google
+    </button>
+
+  </form>
+
+
+    </li>
+  
+
+
+        
+      </div>
+    </div>
+    <div class="ui basic vertically fitted tab segment" data-tab="email">
+      
+        <p class="ui center aligned vertically fitted small basic fluid segment">
+          
+          Need an account? <a href="/accounts/signup/?next=%2Fcas%2Flogin%3Fsubproject%3Desp-faq%26service%3Dhttps%253A%252F%252Fespressif-docs.readthedocs-hosted.com%252F_%252Faccounts%252Flogin%252F%253Fnext%253Dhttps%25253A%25252F%25252Fespressif-docs.readthedocs-hosted.com%25252Fprojects%25252Fesp-faq%25252Fen%25252Flatest%25252F_images%25252Fesp32-nodemcu.png#/email">Sign up</a> first.
+        </p>
+
+        <form class="ui form"
+              method="post"
+              action="/accounts/login/#/email">
+          <input type="hidden" name="csrfmiddlewaretoken" value="3VQXuxvs3MZE9Y6Ij5KTSkMuTTcw0sTaZCvSEZT5SoETDc8iPeUa5SIZ1xronaLG">
+          <div class="ui basic fieldset segment">
+  
+    
+
+
+
+  
+
+  
+    
+
+
+  
+  
+    
+
+
+
+
+
+  
+
+  <div id="div_id_login" class="required field">
+
+  
+    
+      
+      <label for="id_login"
+             class="ui "
+             >
+        Login
+        
+      </label>
+    
+  
+
+  
+    
+      <div class="">
+        <input type="text" name="login" placeholder="Username or email" autocomplete="email" class="textinput textInput" required id="id_login">
+        
+
+      </div>
+    
+  
+
+  </div>
+
+
+  
+
+
+  
+    
+
+
+  
+  
+    
+
+
+
+
+
+  
+
+  <div id="div_id_password" class="required field">
+
+  
+    
+      
+      <label for="id_password"
+             class="ui "
+              data-html="&lt;a href=&quot;/accounts/password/reset/&quot;&gt;Forgot your password?&lt;/a&gt;" data-bind="semanticui: {popup: {hoverable: true, delay: {show: 500}}}">
+        Password
+        
+          <i class="ui grey fa-duotone fa-circle-question icon"></i>
+        
+      </label>
+    
+  
+
+  
+    
+      <div class="">
+        <input type="password" name="password" placeholder="Password" autocomplete="current-password" class="textinput textInput" required aria-describedby="id_password_helptext" id="id_password">
+        
+
+      </div>
+    
+  
+
+  </div>
+
+
+  
+
+
+  
+    
+
+
+  
+  
+    
+
+
+
+
+  <div class="field">
+    <div class="ui checkbox">
+      
+        
+
+  
+
+  <div id="div_id_remember" class="">
+
+  
+
+
+  
+  <input type="checkbox" name="remember" class="checkboxinput form-check-input" id="id_remember">
+
+  
+    <label for="id_remember" class="form-check-label">
+      Remember Me
+
+      
+    </label>
+  
+
+  
+
+
+
+  </div>
+
+      
+    </div>
+  </div>
+
+
+  
+
+
+  
+</div>
+
+
+          
+            <input type="hidden"
+                   name="next"
+                   value="/cas/login?subproject=esp-faq&amp;service=https%3A%2F%2Fespressif-docs.readthedocs-hosted.com%2F_%2Faccounts%2Flogin%2F%3Fnext%3Dhttps%253A%252F%252Fespressif-docs.readthedocs-hosted.com%252Fprojects%252Fesp-faq%252Fen%252Flatest%252F_images%252Fesp32-nodemcu.png" />
+          
+
+          <div class="ui stackable relaxed text menu">
+            <a class="item" href="/accounts/password/reset/">Forgot your password?</a>
+            <div class="right menu">
+              <button class="ui primary button"
+                      data-bind="click: save_login_method.bind($data, 'email')"
+                      type="submit">Log in</button>
+            </div>
+          </div>
+
+        </form>
+      
+    </div>
+
+    
+      <div class="ui basic center aligned tab segment" data-tab="sso">
+        <a href="/accounts/saml/login/?next=/cas/login?subproject=esp-faq&amp;service=https%3A%2F%2Fespressif-docs.readthedocs-hosted.com%2F_%2Faccounts%2Flogin%2F%3Fnext%3Dhttps%253A%252F%252Fespressif-docs.readthedocs-hosted.com%252Fprojects%252Fesp-faq%252Fen%252Flatest%252F_images%252Fesp32-nodemcu.png">
+
+          <button class="ui button"
+                  type="submit"
+                  data-bind="click: save_login_method.bind($data, 'sso'), semanticui: { popup: popup_login_method('sso') }"
+                  title="Single sign-on">
+            <i class="fas fa-shield-alt icon" aria-hidden="true"></i>
+            Log in using single sign-on
+          </button>
+        </a>
+      </div>
+    
+  </div>
+
+  
+  
+
+
+                </div>
+              
+
+            
+          </div>
+          
+            <div class="extra content">
+              
+  
+    <div class="right floated">
+      
+      <a href="//app.readthedocs.com/"
+         aria-label="Read the Docs">
+        <img class="ui middle aligned image"
+             src="https://app-assets.readthedocs.com/readthedocsext/theme/images/logo-wordmark-dark.8035ede2e46d.svg"
+             width="140"
+             alt="Read the Docs logo" />
+      </a>
+      
+    </div>
+  
+
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+    
+
+
+    
+  
+      <script type="text/javascript" src="https://app-assets.readthedocs.com/readthedocsext/theme/js/runtime~site.560de8730933.js"></script>
+      <script type="text/javascript" src="https://app-assets.readthedocs.com/readthedocsext/theme/js/vendor.99cb2a88ccb3.js"></script>
+      <script type="text/javascript" src="https://app-assets.readthedocs.com/readthedocsext/theme/js/site.5c4a652220f4.js"></script>
+    
+
+  </body>
+</html>
