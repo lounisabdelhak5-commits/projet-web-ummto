@@ -64,6 +64,6 @@ E_Commerce_Informatique/
     brands/            ← 18 logos SVG de marques
   backend/             ← Serveur Node.js (optionnel)
     server.js, database.js, routes/, middleware/
-  readme.txt           ← Ce fichier
+  readme.txt           ← fichier de description
 
 
